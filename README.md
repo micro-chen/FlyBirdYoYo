@@ -1,11 +1,11 @@
 # FlyBirdYoYo
 FlyBirdYoYo 是一个快速开发Web项目的整体框架 ,基于Asp.net Core 2.2 .
-开发效率 不能再高了，代码一键生成。
+开发效率 简直不能再高了，代码一键生成。
 # 项目总览
 使用asp.net core 2.2 开发跨平台的Web项目，越来越成熟。得益于微软的.net core 开源技术。asp.net core 的社区正在迅速发展。
 本项目目前使用主要框架 asp.net core webapi 
 # 依赖技术：
-Ioc：.net core 内置的依赖倒置； 
+Ioc：.net core 内置的依赖倒置；     
 AutoMapper:用来实体跟业务DTO的类型快速转换； 
 缓存支持：MemoryCache  +Redis ，使用配置策略 ，滑动切换缓存组件； 
 Dapper：用来实现数据交互的核心； 
