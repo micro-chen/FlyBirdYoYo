@@ -1,0 +1,408 @@
+﻿<ArrayOfExTemplateItemModel>
+  <ExTemplateItemModel Id="1">
+    <Id>1</Id>
+    <Key>f_name</Key>
+    <Name>发件人</Name>
+    <Value>发件人</Value>
+    <Tips>发件人</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="2">
+    <Id>2</Id>
+    <Key>f_tel</Key>
+    <Name>发件人电话</Name>
+    <Value>发件人电话</Value>
+    <Tips>发件人电话</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="3">
+    <Id>3</Id>
+    <Key>f_addr</Key>
+    <Name>发件地址</Name>
+    <Value>发件地址</Value>
+    <Tips>发件地址</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="4">
+    <Id>4</Id>
+    <Key>f_info</Key>
+    <Name>发货信息</Name>
+    <Value>发货信息</Value>
+    <Tips>发货信息</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="5">
+    <Id>5</Id>
+    <Key>f_date</Key>
+    <Name>发件日期</Name>
+    <Value>发件日期</Value>
+    <Tips>(单选)当天 后一天，(多选)是否显示时分秒</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="6">
+    <Id>6</Id>
+    <Key>f_ww</Key>
+    <Name>发件旺旺</Name>
+    <Value>发件旺旺</Value>
+    <Tips>(单选)[当前登陆为子旺旺时]只显示主旺旺 显示子旺旺 只显示:后边的部分</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="7">
+    <Id>7</Id>
+    <Key>f_memo</Key>
+    <Name>卖家备注</Name>
+    <Value>卖家备注</Value>
+    <Tips>卖家备注</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="8">
+    <Id>8</Id>
+    <Key>f_qm</Key>
+    <Name>发件人签名</Name>
+    <Value>发件人签名</Value>
+    <Tips>发件人签名</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="9">
+    <Id>9</Id>
+    <Key>f_zip</Key>
+    <Name>发件邮编</Name>
+    <Value>发件邮编</Value>
+    <Tips>发件邮编</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="10">
+    <Id>10</Id>
+    <Key>s_name</Key>
+    <Name>收件人</Name>
+    <Value>收件人</Value>
+    <Tips>收件人</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="11">
+    <Id>11</Id>
+    <Key>s_phone</Key>
+    <Name>收件手机</Name>
+    <Value>收件手机</Value>
+    <Tips>收件人手机</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="12">
+    <Id>12</Id>
+    <Key>s_tel</Key>
+    <Name>收件固话</Name>
+    <Value>收件固话</Value>
+    <Tips>收件人固定电话</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="13">
+    <Id>13</Id>
+    <Key>s_p</Key>
+    <Name>收件省</Name>
+    <Value>收件省</Value>
+    <Tips>收件人所在省</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="14">
+    <Id>14</Id>
+    <Key>s_city</Key>
+    <Name>收件市</Name>
+    <Value>收件市</Value>
+    <Tips>收件人所在市</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="15">
+    <Id>15</Id>
+    <Key>s_q</Key>
+    <Name>收件区</Name>
+    <Value>收件区</Value>
+    <Tips>收件人所在区</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="16">
+    <Id>16</Id>
+    <Key>s_addr</Key>
+    <Name>收件地址</Name>
+    <Value>收件地址</Value>
+    <Tips>收件人地址</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="17">
+    <Id>17</Id>
+    <Key>s_addrall</Key>
+    <Name>收件街道</Name>
+    <Value>收件街道</Value>
+    <Tips>收件街道</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="18">
+    <Id>18</Id>
+    <Key>s_ww</Key>
+    <Name>买家旺旺</Name>
+    <Value>买家旺旺</Value>
+    <Tips>买家旺旺</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="19">
+    <Id>19</Id>
+    <Key>s_tid</Key>
+    <Name>订单编号</Name>
+    <Value>订单编号</Value>
+    <Tips>订单编号</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="20">
+    <Id>20</Id>
+    <Key>s_zip</Key>
+    <Name>收件邮编</Name>
+    <Value>收件邮编</Value>
+    <Tips>收件人邮编</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="21">
+    <Id>21</Id>
+    <Key>xdate</Key>
+    <Name>下单时间</Name>
+    <Value>下单时间</Value>
+    <Tips>下单时间</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="22">
+    <Id>22</Id>
+    <Key>fdate</Key>
+    <Name>付款时间</Name>
+    <Value>付款时间</Value>
+    <Tips>付款时间</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="23">
+    <Id>23</Id>
+    <Key>s_message</Key>
+    <Name>买家留言</Name>
+    <Value>买家留言</Value>
+    <Tips>买家留言</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="24">
+    <Id>24</Id>
+    <Key>count</Key>
+    <Name>数量</Name>
+    <Value>数量</Value>
+    <Tips>数量</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="25">
+    <Id>25</Id>
+    <Key>mdd</Key>
+    <Name>目的地</Name>
+    <Value>目的地</Value>
+    <Tips>目的地</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="26">
+    <Id>26</Id>
+    <Key>dsje</Key>
+    <Name>代收金额</Name>
+    <Value>代收金额</Value>
+    <Tips>代收金额</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="27">
+    <Id>27</Id>
+    <Key>lc</Key>
+    <Name>LC编号</Name>
+    <Value>LC编号</Value>
+    <Tips>LC编号</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="28">
+    <Id>28</Id>
+    <Key>ddje</Key>
+    <Name>实付金额</Name>
+    <Value>实付金额</Value>
+    <Tips>实付金额</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="29">
+    <Id>29</Id>
+    <Key>logo</Key>
+    <Name>店标</Name>
+    <Value>店标</Value>
+    <Tips>店标</Tips>
+    <ItemType>Img</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="30">
+    <Id>30</Id>
+    <Key>mjs</Key>
+    <Name>满就送</Name>
+    <Value>满就送</Value>
+    <Tips>满就送</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="31">
+    <Id>31</Id>
+    <Key>hkzj</Key>
+    <Name>货款总计</Name>
+    <Value>货款总计</Value>
+    <Tips>货款总计</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="32">
+    <Id>32</Id>
+    <Key>invoice</Key>
+    <Name>发票抬头</Name>
+    <Value>发票抬头</Value>
+    <Tips>发票抬头</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="33">
+    <Id>33</Id>
+    <Key>fhdexnumber</Key>
+    <Name>快递单号</Name>
+    <Value>快递单号</Value>
+    <Tips>快递单号</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="34">
+    <Id>34</Id>
+    <Key>ewm</Key>
+    <Name>二维码</Name>
+    <Value>二维码</Value>
+    <Tips>二维码</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="35">
+    <Id>35</Id>
+    <Key>zhliang</Key>
+    <Name>总重量</Name>
+    <Value>总重量</Value>
+    <Tips>总重量</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="36">
+    <Id>36</Id>
+    <Key>bgm</Key>
+    <Name>包裹码</Name>
+    <Value>包裹码</Value>
+    <Tips>包裹码</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="37">
+    <Id>37</Id>
+    <Key>printid</Key>
+    <Name>打印序号</Name>
+    <Value>打印序号</Value>
+    <Tips>打印序号</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="38">
+    <Id>38</Id>
+    <Key>sfjc</Key>
+    <Name>省份简称</Name>
+    <Value>省份简称</Value>
+    <Tips>省份简称</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="39">
+    <Id>39</Id>
+    <Key>baoguoCount</Key>
+    <Name>包裹总数</Name>
+    <Value>包裹总数</Value>
+    <Tips>包裹总数</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="40">
+    <Id>40</Id>
+    <Key>baoguoID</Key>
+    <Name>包裹编号</Name>
+    <Value>包裹编号</Value>
+    <Tips>包裹编号</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="41">
+    <Id>41</Id>
+    <Key>mdd</Key>
+    <Name>集包目的地</Name>
+    <Value>集包目的地</Value>
+    <Tips>集包目的地</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <!-- 个性集包码=集包条形码 ?? -->
+  <ExTemplateItemModel Id="42">
+    <Id>42</Id>
+    <Key>gx_jbm</Key>
+    <Name>个性集包码</Name>
+    <Value>个性集包码</Value>
+    <Tips>个性集包码</Tips>
+    <ItemType>Barcode</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="43">
+    <Id>43</Id>
+    <Key>txm_jbm</Key>
+    <Name>集包条形码</Name>
+    <Value>集包条形码</Value>
+    <Tips>集包条形码</Tips>
+    <ItemType>Barcode</ItemType>
+    <IsEnable>0</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="44">
+    <Id>44</Id>
+    <Key>txm_tid</Key>
+    <Name>订单条形码</Name>
+    <Value>订单条形码</Value>
+    <Tips>订单条形码</Tips>
+    <ItemType>Barcode</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+  <ExTemplateItemModel Id="45">
+    <Id>45</Id>
+    <Key>fjm</Key>
+    <Name>分拣码</Name>
+    <Value>分拣码</Value>
+    <Tips>分拣码</Tips>
+    <ItemType>Text</ItemType>
+    <IsEnable>1</IsEnable>
+  </ExTemplateItemModel>
+</ArrayOfExTemplateItemModel>

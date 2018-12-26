@@ -1,0 +1,17 @@
+﻿@using  FlyBirdYoYo.Web
+@{
+    ViewData["Title"] = WorkContext.SiteName + "-开放接口";
+}
+
+<div>
+    <a href="http://www.flybirdyoyo.com/?t=@DateTime.Now.ToTimeStampMilliseconds()" target="_blank">前往UI入口</a>
+</div>
+<div>
+    <a href="/pdd/index?t=@DateTime.Now.ToTimeStampMilliseconds()" target="_blank">前往拼多多登录入口</a>
+</div>
+<div>
+    <a href="/cainiao/index?t=@DateTime.Now.ToTimeStampMilliseconds()" target="_blank">前往菜鸟商家授权入口</a>
+</div>
+<div>
+    <a href="http://www.flybirdyoyo.com/#/login?t=@DateTime.Now.ToTimeStampMilliseconds()" target="_blank">前往后台管理入口</a>
+</div>

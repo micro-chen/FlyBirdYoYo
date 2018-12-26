@@ -1,0 +1,6 @@
+﻿实现AOP拦截 属性Attribute
+基于AOP拦击方法 的属性  类的属性 
+对功能模块分组
+
+FuncActionAttribute  方法的区分  描述
+ModuleAttribute  类的区分 描述

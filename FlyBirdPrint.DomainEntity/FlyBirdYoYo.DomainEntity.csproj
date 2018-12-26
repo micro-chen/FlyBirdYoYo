@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\FlyBirdPrint.Web\bin\Debug\</OutputPath>
+    <DocumentationFile>..\FlyBirdPrint.Web\bin\Debug\FlyBirdPrint.DomainEntity.xml</DocumentationFile>
+    <NoWarn>1701;1702;1705;1591;</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="1.50.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlyBirdPrint.DbManage\FlyBirdYoYo.DbManage.csproj" />
+    <ProjectReference Include="..\FlyBirdPrint.Utilities\FlyBirdYoYo.Utilities.csproj" />
+    <ProjectReference Include="..\Pdd.OpenSdk.Core\Pdd.OpenSdk.Core.csproj" />
+    <ProjectReference Include="..\Platforms\Alibaba\Alipay.AopSdk.Core\Alipay.AopSdk.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.netcore.app\2.1.0\ref\netcoreapp2.1\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

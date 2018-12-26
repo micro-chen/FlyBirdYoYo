@@ -1,0 +1,68 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".cs" #>
+<#//format= "{0}Model"//#>
+
+<#
+	TableHost host = (TableHost)(Host);
+	host.Fieldlist.Sort(CodeCommon.CompareByintOrder);
+	ColumnInfo identityKey=null;
+	foreach (ColumnInfo c in host.Fieldlist){
+	 if(c.IsPrimaryKey==true){
+	 identityKey=c;
+	 break;
+	 }
+
+	}
+#>
+using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
+
+using FlyBirdYoYo.DbManage;
+using FlyBirdYoYo.DbManage.Utilities;
+
+namespace FlyBirdYoYo.DomainEntity
+{
+	<# if( host.TableDescription.Length > 0) {#>
+ 	//<#= host.TableDescription #>
+	<# } #>[Table("<#= host.TableName#>")]
+	[PrimaryKey(Name ="<#= identityKey.ColumnName #>")]
+    [Serializable]
+	public class <#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(host.TableName))#>Model:BaseEntity
+	{
+    #region 表字段属性
+	
+      	<# foreach (ColumnInfo c in host.Fieldlist)
+		{ #><# 
+		//if(c.ColumnName=="Id")continue;
+		#>
+       <# if(c.Nullable==false||CodeCommon.DbTypeToCS(c.TypeName)=="string") 
+     {#>private <#= CodeCommon.DbTypeToCS(c.TypeName) #> _<#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(c.ColumnName.ToString())) #>;
+        /// <summary>
+		/// <#= string.IsNullOrEmpty(c.Description) ? c.ColumnName : c.Description #>
+        /// </summary>	
+	   [DataMember]
+	   [Column("<#=c.ColumnName.ToString()#>")]
+        public <#= CodeCommon.DbTypeToCS(c.TypeName) #> <#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(c.ColumnName.ToString())) #>
+	<# }
+	else{#>private <#= CodeCommon.DbTypeToCS(c.TypeName) #>? _<#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(c.ColumnName.ToString())) #>;
+	   [DataMember]
+	   [Column("<#=c.ColumnName.ToString()#>")]
+        public <#= CodeCommon.DbTypeToCS(c.TypeName) #>? <#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(c.ColumnName.ToString())) #>
+	<# } 
+       #>
+        {
+            get{ return _<#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(c.ColumnName.ToString()))#>; }
+            set{ 
+			_<#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(c.ColumnName.ToString())) #> = value; 
+			NotifyPropertyChange("<#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(c.ColumnName.ToString())) #>",value);
+			}
+        }        
+		<# } #>
+   
+#endregion
+   
+	}
+}

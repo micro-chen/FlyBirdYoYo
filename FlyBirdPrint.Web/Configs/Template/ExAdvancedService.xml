@@ -1,0 +1,30 @@
+﻿<ArrayOfExServiceViewModel>
+  <ExServiceViewModel code="SF" name="顺丰">
+    <Code>SF</Code>
+    <Name>顺丰</Name>
+    <ExServiceItems>
+      <ExServiceItem>
+        <Id>1</Id>
+        <Key>dshk</Key>
+        <Name>代收货款</Name>
+        <Value>代收货款</Value>
+        <Tips>代收货款</Tips>
+        <DataName></DataName>
+        <IsEnable>1</IsEnable>
+        <IsSetVal>2</IsSetVal>
+        <Unit></Unit>
+      </ExServiceItem>
+      <ExServiceItem>
+        <Id>2</Id>
+        <Key>zmj</Key>
+        <Name>子母件</Name>
+        <Value>子母件</Value>
+        <Tips>子母件</Tips>
+        <DataName></DataName>
+        <IsEnable>1</IsEnable>
+        <IsSetVal>2</IsSetVal>
+        <Unit></Unit>
+      </ExServiceItem>
+    </ExServiceItems>
+  </ExServiceViewModel>
+</ArrayOfExServiceViewModel>

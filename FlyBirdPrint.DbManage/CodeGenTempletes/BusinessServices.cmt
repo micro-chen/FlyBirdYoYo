@@ -1,0 +1,270 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".cs" #>
+<#//format= "{0}Service"//#>
+<#
+	TableHost host = (TableHost)(Host);	
+	string DbParaHead=host.DbParaHead;
+	string DbParaDbType=host.DbParaDbType;
+	string preParameter=host.preParameter;
+	string ModelSpace = host.NameSpace+".Model."+ TemplateHost.GetClassFileName4Qileroro(host.TableName);
+	ColumnInfo identityKey=host.IdentityKey;
+	string returnValue = "void";
+    if (identityKey!=null)
+    {         
+         returnValue = CodeCommon.DbTypeToCS(identityKey.TypeName);              
+    }
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
+using FlyBirdYoYo.DomainEntity;
+using FlyBirdYoYo.DbManage;
+using FlyBirdYoYo.Data.Repository;
+using FlyBirdYoYo.Utilities.Interface;
+
+using FlyBirdYoYo.DomainEntity.ViewModel;
+
+namespace FlyBirdYoYo.BusinessServices
+{
+	<# if( host.TableDescription.Length > 0) {#>
+ 	//<#= host.TableDescription #>业务方法服务管理
+	<# } #>public  class <#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Service:BaseService,IBusinessBaseService
+	{
+	     #region 属性集合
+
+        #endregion
+
+        #region   字段集合
+ private <#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Repository dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>;
+        #endregion
+
+        #region  构造函数
+
+        public <#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Service()
+        {
+			this.dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>=Singleton<<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Repository>.Instance;
+        }
+
+        #endregion
+
+        #region   系统业务方法
+
+
+        #region  Insert操作
+
+        /// <summary>
+        /// 添加单个<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model对象方法(可返回对应数据表中 的此实体ID)
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool AddOne<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model(<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model entity)
+        {
+            var result = false;
+
+            try
+            {
+                var entityID = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.Insert(entity);
+			    if (entityID>0)
+                {
+				    entity.Id = entityID;
+                    result = true;
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 批量插入<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model对象方法(不能返回对应数据表中 的ID)
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <returns>返回操作结果</returns>
+        public bool AddMuliti<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Models(IEnumerable<<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model> entities)
+        {
+            var result = false;
+            try
+            {
+                result = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.InsertMulitiEntities(entities);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+
+        #endregion
+
+
+        #region Update 更新操作
+        /// <summary>
+        /// 更新单个<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model实体模型
+        /// </summary>
+        /// <typeparam name="TElement"></typeparam>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool UpdateOne<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model(<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model entity)
+        {
+            var result = false;
+
+            try
+            {
+                result = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.Update(entity) > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 更新<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model元素 通过  符合条件的
+        /// </summary>
+        /// <param name="entity">携带值的载体</param>
+        /// <param name="predicate">条件</param>
+        /// <returns></returns>
+        public bool Update<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>ModelsByCondition(<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model entity, Expression<Func<<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model, bool>> predicate)
+        {
+            var result = false;
+
+            try
+            {
+                result = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.UpdateByCondition(entity, predicate) > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        #endregion
+
+
+        #region Select   查询操作
+        /// <summary>
+        /// 通过主键获取单个<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model元素
+        /// </summary>
+        /// <param name="id">Identifier</param>
+        /// <returns>Entity</returns>
+        public <#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model Get<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>ElementById(long id)
+        {
+            <#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model result = null;
+
+            try
+            {
+                result = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.GetElementById(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+		 /// <summary>
+        /// 通过特定的条件查询出<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model元素
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public <#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model Get<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>FirstOrDefaultByCondition(Expression<Func<<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model, bool>> predicate)
+        {
+            <#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model result = null;
+
+            try
+            {
+                result = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.GetFirstOrDefaultByCondition(predicate);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+
+
+        /// <summary>
+        /// 通过特定的条件查询出<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model元素集合
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public List<<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model> Get<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>ElementsByCondition(Expression<Func<<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model, bool>> predicate)
+        {
+            List<<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model> result = null;
+
+            try
+            {
+                result = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.GetElementsByCondition(predicate);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+        
+
+        #endregion
+
+
+        #region Delete 删除操作
+        /// <summary>
+        /// 删除一个<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model实体
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool DeleteOne<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model(<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model entity)
+        {
+            var result = false;
+
+            try
+            {
+                result = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.Delete(entity) > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+
+
+        // <summary>
+        /// 删除符合条件的<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model实体
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public bool DeleteMuliti<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>ByCondition(Expression<Func<<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>Model, bool>> predicate)
+        {
+            var result = false;
+
+            try
+            {
+                result = dal_<#= TemplateHost.GetClassFileName4Qileroro(host.TableName) #>.DeleteByCondition(predicate) > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return result;
+        }
+        #endregion
+
+        #endregion	
+   
+   
+           #region 自定义业务方法
+		   #endregion	
+	}
+}

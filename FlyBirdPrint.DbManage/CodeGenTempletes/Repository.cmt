@@ -1,0 +1,38 @@
+﻿<#@ template language="c#" HostSpecific="True" #>
+<#@ output extension= ".cs" #>
+<#//format= "{0}Repository"//#>
+<#
+	TableHost host = (TableHost)(Host);	
+	string DbParaHead=host.DbParaHead;
+	string DbParaDbType=host.DbParaDbType;
+	string preParameter=host.preParameter;
+	string ModelSpace = host.NameSpace+".Model."+ host.GetModelClass(TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(host.TableName)));
+	ColumnInfo identityKey=host.IdentityKey;
+	string returnValue = "void";
+    if (identityKey!=null)
+    {         
+         returnValue = CodeCommon.DbTypeToCS(identityKey.TypeName);              
+    }
+#>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Linq.Expressions;
+
+using FlyBirdYoYo.DbManage;
+using FlyBirdYoYo.DomainEntity;
+using FlyBirdYoYo.Utilities.Interface;
+
+namespace FlyBirdYoYo.Data.Repository
+{
+	<# if( host.TableDescription.Length > 0) {#>
+ 	//<#= host.TableDescription #>数据仓储管理
+	<# } #>public  class <#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(host.TableName)) #>Repository: BaseRepository<<#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(host.TableName)) #>Model>,IDbContext<<#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(host.TableName)) #>Model>, IRepository
+	{
+		public <#= TemplateHost.GetClassFileName4Qileroro(host.GetModelClass(host.TableName)) #>Repository()
+	    {}		
+   
+	}
+}

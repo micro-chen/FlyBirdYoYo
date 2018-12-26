@@ -1,0 +1,197 @@
+﻿
+#卸载OpenJdk 并按照Oracle的Jdk8
+rpm -qa | grep java
+####noarch文件可以不用删除
+rpm -e --nodeps java-1.6.0-openjdk-1.6.0.41-1.13.13.1.el7_3.x86_64
+rpm -e --nodeps java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+rpm -e --nodeps java-1.8.0-openjdk-headless-1.8.0.191.b12-1.el7_6.x86_64
+rpm -e --nodeps java-1.7.0-openjdk-devel-1.7.0.201-2.6.16.1.el7_6.x86_64
+rpm -e --nodeps java-1.6.0-openjdk-devel-1.6.0.41-1.13.13.1.el7_3.x86_64
+rpm -e --nodeps java-1.7.0-openjdk-1.7.0.201-2.6.16.1.el7_6.x86_64
+rpm -e --nodeps java-1.8.0-openjdk-devel-1.8.0.191.b12-1.el7_6.x86_64
+rpm -e --nodeps java-1.7.0-openjdk-headless-1.7.0.201-2.6.16.1.el7_6.x86_64
+cd /usr/bin
+wget https://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.tar.gz?AuthParam=1544156256_1ad8988c04824bb54a5867aa7a83ede9
+解压。删除包
+配置jdk的环境变量
+vi /etc/profile.d/*.sh
+找到jdk的软链接
+修改内容
+export JAVA_HOME=/usr/bin/jdk1.8.0_191
+export CLASSPATH=.:${JAVA_HOME}/jre/lib/rt.jar:${JAVA_HOME}/lib/dt.jar:${JAVA_HOME}/lib/tools.jar
+export PATH=$PATH:${JAVA_HOME}/bin
+
+java -version
+[root@w01 include]# java -version
+java version "1.8.0_191"
+Java(TM) SE Runtime Environment (build 1.8.0_191-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.191-b12, mixed mode)
+
+
+
+
+
+
+#安装凭证管理器
+linux 环境需配置凭证管理器
+请参考进行按照VSTS的凭证管理器
+https://github.com/Microsoft/Git-Credential-Manager-for-Mac-and-Linux/blob/master/Install.md#system-requirements
+
+
+ git config  --global user.name "wenguang.chen"   
+git config  --global user.email "cwg120110qq@163" 
+git config --global credential.helper
+git config --global --get credential.helper git-credential-manager
+git config --global credential.canFallBackToInsecureStore true
+
+
+最后克隆代码的时候 要求随意打开个浏览器，进行授权当前设备：将验证码输入到浏览器即可
+Cloning into 'HuiDangSo'...
+------------------------------------
+OAuth 2.0 Device Flow authentication
+------------------------------------
+To complete the authentication process, please open a web browser and visit the following URI:
+https://microsoft.com/devicelogin
+When prompted, enter the following code:
+GNHUM7HH7
+
+
+
+git clone https://smartdevframework.visualstudio.com/FlyBirdYoYo/_git/FlyBirdYoYo
+git clone https://smartdevframework.visualstudio.com/FlyBirdYoYo-UI/_git/FlyBirdYoYo-UI
+
+
+第三部
+配置凭据管理
+https://smartdevframework.visualstudio.com/_admin/_policy
+打开授权
+Application connection policies
+Alternate authentication credentials
+
+
+#nginx 相关
+linux下如何查找nginx配置文件的位置，方法如下：
+
+先找出nginx可执行文件的路径
+
+ps -ef | grep nginx
+[root@localhost /data/nginx/logs 09:47:00&&23]#ps -ef | grep nginx 
+root 1734 1 0 Oct28 ? 00:00:00 nginx: master process /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+
+那么/usr/local/nginx/conf/nginx.conf就是配置文件了
+
+/home/server_config/nginx/nginx.conf
+
+Nginx 安装后只有一个程序文件，本身并不提供各种管理程序，它是使用参数和系统信号机制对 Nginx 进程本身进行控制的。 Nginx 的参数包括有如下几个：
+
+使用:
+
+/usr/local/nginx/sbin/nginx -参数
+-c：使用指定的配置文件而不是conf目录下的nginx.conf 。
+-t：测试配置文件是否正确，在运行时需要重新加载配置的时候，此命令非常重要，用来检测所修改的配置文件是否有语法错误。
+-s：reload 重载
+-s：stop 停止
+启动/重启/停止
+
+sudo /etc/init.d/nginx {start|restart|stop}
+上面的命令其实是基于服务的形式，还可以这样写：
+
+sudo service nginx {start|stop|restart|reload|force-reload|status|configtest|rotate|upgrade}
+当然还有基于信号的方式，这个访问效果更好：
+
+#假设Nginx安装在/usr/local/nginx
+sudo /usr/local/nginx/nginx -s {参数}
+stop - 快速关机
+quit - 优雅的关机
+reload - 重新加载配置文件
+reopen - 重新打开日志文件
+检查配置，同时也是输出配置文件所在位置
+
+/usr/local/nginx/nginx -t
+修改配置后重载
+
+/usr/local/nginx/nginx -s reload
+
+
+#####################我们的配置######################
+
+server {
+    listen        80;
+    server_name   api.flybirdyoyo.com;
+    location / {
+        proxy_pass         http://localhost:8003;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection keep-alive;
+        proxy_set_header   Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Proto $scheme;
+    }
+}
+
+#web 项目编码发布启动
+dotnet publish --configuration Release
+nohup dotnet  /home/web/flybirdyoyo.com/api/FlyBirdYoYo/FlyBirdYoYo.Web/bin/Release/FlyBirdYoYo.Web.dll >> /home/logs/shop.out &
+curl 'http://api.flybirdyoyo.com/api/values/get'
+curl 'http://127.0.0.1:8003/api/values/get'
+
+
+#################################CentOS7安装最新版git教程###########################################
+第一步 最新的git
+
+2017年07月27日 09:51:46
+阅读数：1570
+下载编译工具 
+yum -y groupinstall "Development Tools"
+
+下载依赖包 
+yum -y install zlib-devel perl-ExtUtils-MakeMaker asciidoc xmlto openssl-devel
+
+下载 Git 最新版本的源代码 
+wget https://www.kernel.org/pub/software/scm/git/git-2.13.3.tar.gz 
+登录https://github.com/git/git/releases
+查看git的最新版。不要下载带有-rc的，因为它代表了一个候选发布版本。 
+这里写图片描述 
+如图，可以看出，目前git最新的版本是2.13.3
+
+4.解压 
+tar -zxvf git-2.11.0.tar.gz
+
+5、进入目录配置 
+cd git-2.13.3 
+autoconf 
+./configure --prefix=/usr/local/git
+
+6.安装 
+make && make install
+
+7.配置全局路径 
+ 六、【重要】添加link
+
+[root@localhost git-2017-01-03]# ln -s /usr/local/bin/git /usr/bin/
+
+如果提示如下：
+
+[root@localhost git-2017-01-03]# ln -s /usr/local/bin/git /usr/bin/
+ln: creating symbolic link `/usr/bin/git': File exists
+
+请先删除/usr/bin/git
+
+[root@localhost git-2017-01-03]# rm -rf /usr/bin/git
+
+然后再次执行添加link命令
+
+七、验证版本
+
+[root@localhost git-2017-01-03]# git --version
+git version 2.11.GIT
+
+八、为了后续git https不报错，请在/etc/profile文件中添加环境变量
+
+PATH=$PATH:/usr/libexec/git-core 
+export PATH="/usr/local/git/bin:$PATH" 
+source /etc/profile
+
+8.查看git版本 
+git --version

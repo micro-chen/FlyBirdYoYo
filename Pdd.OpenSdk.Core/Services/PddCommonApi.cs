@@ -1,0 +1,185 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Pdd.OpenSdk.Core.Common;
+using Pdd.OpenSdk.Core.Models.Request;
+using Pdd.OpenSdk.Core.Models.Response;
+
+namespace Pdd.OpenSdk.Core.Services
+{
+    /// <summary>
+    /// 拼多多请求
+    /// </summary>
+    public class PddCommonApi
+    {
+        /// <summary>
+        /// 请求接口
+        /// </summary>
+        static readonly string ApiUrl = "http://gw-api.pinduoduo.com/api/router";
+        public static string ClientId;
+        public static string ClientSecret;
+        /// <summary>
+        /// token
+        /// </summary>
+        public static string AccessToken;
+        public static string RedirectUri;
+        protected static HttpClient client = new HttpClient();
+
+
+        /// <summary>
+        /// post请求封装
+        /// </summary>
+        /// <typeparam name="TModel">请求参数类型</typeparam>
+        /// <typeparam name="TResult">返回参数类型</typeparam>
+        /// <param name="type"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected async Task<TResult> PostAsync< TModel, TResult>(string type, TModel model)
+            where  TModel : PddRequestModel
+            where TResult : class
+        {
+
+            TResult resultModel = null;
+
+            if (!string.IsNullOrEmpty(model.AccessToken))
+            {
+                PddCommonApi.AccessToken = model.AccessToken;//请求的替换为最新的 AccessToken
+            }
+
+            if (string.IsNullOrEmpty(ClientId) || string.IsNullOrEmpty(ClientSecret) || string.IsNullOrEmpty(AccessToken))
+            {
+                throw new Exception("请检查是否设置ClientId、ClientSecret及AccessToken");
+            }
+            // 类型转换到字典
+            var dic = Function.ToDictionary(model);
+
+            // 添加公共参数
+            dic.Add("access_token", AccessToken);
+            dic.Add("client_id", ClientId);
+            dic.Add("data_type", "JSON");
+            dic.Add("versioin", "V1");
+            dic.Add("timestamp", DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
+            //移除不必要的参数
+            if (dic.Keys.Any(k => k == "AccessToken"))
+            {
+                dic.Remove("AccessToken");
+            }
+            if (dic.Keys.Any(k => k == "type"))
+            {
+                dic.Remove("type");
+            }
+            dic.Add("type", type);
+            // 添加签名
+            dic.Add("sign", BuildSign(dic));
+
+            try
+            {
+
+
+                var data = new StringContent(JsonConvert.SerializeObject(dic), Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(ApiUrl, data);
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception("拼多多接口调用返回异常！" + response.StatusCode);
+                }
+
+                //响应为正确的时候，将内容保存
+
+
+                var jsonResult = await response.Content.ReadAsStringAsync();
+                var jObject = JObject.Parse(jsonResult);
+                if (jObject.TryGetValue("error_response", out var errorResponse))
+                {
+                    throw new Exception("拼多多接口调用失败：" + jsonResult);
+                }
+
+                resultModel= JsonConvert.DeserializeObject<TResult>(jsonResult);
+            
+
+                return resultModel;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+
+        }
+        /// <summary>
+        /// 生成签名
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="dic"></param>
+        /// <returns></returns>
+        public string BuildSign(Dictionary<string, object> dic)
+        {
+            // 去除空值并排序
+            dic = dic.Where(d => d.Value != null)
+                .OrderBy(d => d.Key)
+                .ToDictionary((d) => d.Key, (d) => d.Value);
+            // 拼接
+            string signString = "";
+            // 反射处理非基本类型字段的json转换
+            string[] types = { "String", "DateTime", "Int", "Float", "Double" };
+            foreach (var item in dic.Keys.ToArray())
+            {
+                if (!types.Contains(dic[item]?.GetType().Name))
+                {
+                    dic[item] = JsonConvert.SerializeObject(dic[item]);
+                }
+                signString += item + dic[item];
+            }
+            signString = ClientSecret + signString + ClientSecret;
+            // MD5加密
+            using (var md5 = MD5.Create())
+            {
+                signString = Function.GetMd5Hash(md5, signString).ToUpper();
+            }
+            return signString;
+        }
+
+
+    }
+
+    /// <summary>
+    /// 公共请求参数
+    /// </summary>
+    public class CommonReqeustParams
+    {
+        /// <summary>
+        /// API接口名称
+        /// </summary>
+        public string Type { get; set; }
+        /// <summary>
+        /// POP分配给应用的client_id
+        /// </summary>
+        public string Client_Id { get; set; }
+        /// <summary>
+        /// 通过code获取的access_token(无需授权的接口，该字段不参与sign签名运算)
+        /// </summary>
+        public string Access_Token { get; set; }
+        /// <summary>
+        /// UNIX时间戳
+        /// </summary>
+        public string TimeStamp { get; set; }
+        /// <summary>
+        /// 响应格式，即返回数据的格式，JSON或者XML（二选一），默认JSON，注意是大写
+        /// </summary>
+        public string Data_Type { get; set; } = "JSON";
+        public string Version { get; set; } = "V1";
+        /// <summary>
+        /// API输入参数签名结果，签名算法参考开放平台接入指南第三部分底部
+        /// </summary>
+        public string Sign { get; set; }
+    }
+}

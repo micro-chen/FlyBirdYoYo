@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlyBirdPrint.Data\FlyBirdYoYo.Data.csproj" />
+    <ProjectReference Include="..\FlyBirdPrint.DbManage\FlyBirdYoYo.DbManage.csproj" />
+    <ProjectReference Include="..\FlyBirdPrint.DomainEntity\FlyBirdYoYo.DomainEntity.csproj" />
+    <ProjectReference Include="..\FlyBirdPrint.Utilities\FlyBirdYoYo.Utilities.csproj" />
+    <ProjectReference Include="..\Platforms\Alibaba\Alipay.AopSdk.Core\Alipay.AopSdk.Core.csproj" />
+    <ProjectReference Include="..\Taobao.Pac.Sdk\Taobao.Pac.Sdk.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Platform\Provider\" />
+  </ItemGroup>
+
+</Project>

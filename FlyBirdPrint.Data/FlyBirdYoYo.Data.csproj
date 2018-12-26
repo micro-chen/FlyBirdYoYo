@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="Dapper.Contrib" Version="1.50.5" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0-preview.18571.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlyBirdPrint.DbManage\FlyBirdYoYo.DbManage.csproj" />
+    <ProjectReference Include="..\FlyBirdPrint.DomainEntity\FlyBirdYoYo.DomainEntity.csproj" />
+    <ProjectReference Include="..\FlyBirdPrint.Utilities\FlyBirdYoYo.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

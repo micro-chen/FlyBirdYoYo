@@ -1,0 +1,175 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
+    <UserSecretsId>aspnet-FlyBirdYoYo.Web-D2591AA8-61AB-450F-BF4C-66C497CC3534</UserSecretsId>
+    <TypeScriptToolsVersion>3.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet></CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1705;1591;1587;1572;</NoWarn>
+    <DocumentationFile>bin\Debug\FlyBirdYoYo.Web.xml</DocumentationFile>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Compile Remove="ViewModels\**" />
+    <Compile Remove="wwwroot\js\**" />
+    <Content Remove="logs\**" />
+    <Content Remove="ViewModels\**" />
+    <Content Remove="wwwroot\js\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <EmbeddedResource Remove="ViewModels\**" />
+    <EmbeddedResource Remove="wwwroot\js\**" />
+    <None Remove="logs\**" />
+    <None Remove="ViewModels\**" />
+    <None Remove="wwwroot\js\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Remove="Configs\redis.config.json" />
+    <Content Remove="SandBox\province_data.json" />
+    <Content Remove="SandBox\sandbox_orderlist.json" />
+    <Content Remove="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Shared\_Layout.cshtml.demo.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml.demo.txt">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.6.0-preview.18571.3" />
+    <PackageReference Include="TwoFactorAuth.Net" Version="1.3.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="Configs\redis.config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SandBox\province_data.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SandBox\sandbox_orderlist.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\demo\Scripts\applicationCore.js" />
+    <None Include="wwwroot\demo\Scripts\jquery-1.6.4-vsdoc.js" />
+    <None Include="wwwroot\demo\Scripts\jquery-1.6.4.js" />
+    <None Include="wwwroot\demo\Scripts\jquery-1.6.4.min.js" />
+    <None Include="wwwroot\demo\Scripts\jquery.signalR-1.2.2.js" />
+    <None Include="wwwroot\demo\Scripts\jquery.signalR-1.2.2.min.js" />
+    <None Include="wwwroot\demo\Scripts\json2.js" />
+    <None Include="wwwroot\demo\Scripts\json2.min.js" />
+    <None Include="wwwroot\demo\Scripts\plugins\compress\base64-string.js" />
+    <None Include="wwwroot\demo\Scripts\plugins\compress\lz-string.js" />
+    <None Include="wwwroot\demo\Scripts\plugins\compress\lz-string.min.js" />
+    <None Include="wwwroot\demo\Scripts\printerHttpClient.js" />
+    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.core.js" />
+    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.hubs.js" />
+    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.common.js" />
+    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.foreverFrame.js" />
+    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.longPolling.js" />
+    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.serverSentEvents.js" />
+    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.webSockets.js" />
+    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.version.js" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\scripts\layui\font\iconfont.svg" />
+    <None Include="wwwroot\scripts\layui\layui.all.js" />
+    <None Include="wwwroot\scripts\layui\layui.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\carousel.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\code.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\element.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\flow.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\form.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\jquery.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\laydate.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\layedit.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\layer.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\laypage.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\laytpl.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\mobile.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\table.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\tree.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\upload.js" />
+    <None Include="wwwroot\scripts\layui\lay\modules\util.js" />
+    <None Include="wwwroot\scripts\bootstrap.js" />
+    <None Include="wwwroot\scripts\bootstrap.min.js" />
+    <None Include="wwwroot\scripts\index\index.js" />
+    <None Include="wwwroot\scripts\index\jquery.easing.min.js" />
+    <None Include="wwwroot\scripts\index\layerslider.kreaturamedia.jquery-min.js" />
+    <None Include="wwwroot\scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="wwwroot\scripts\jquery-1.10.2.js" />
+    <None Include="wwwroot\scripts\jquery-1.10.2.min.js" />
+    <None Include="wwwroot\scripts\jquery-1.10.2.min.map" />
+    <None Include="wwwroot\scripts\jquery.nav.min.js" />
+    <None Include="wwwroot\scripts\jquery.portamento.js" />
+    <None Include="wwwroot\scripts\nav.js" />
+    <None Include="wwwroot\scripts\_references.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlyBirdPrint.BusinessServices\FlyBirdYoYo.BusinessServices.csproj" />
+    <ProjectReference Include="..\FlyBirdPrint.DomainEntity\FlyBirdYoYo.DomainEntity.csproj" />
+    <ProjectReference Include="..\FlyBirdPrint.Utilities\FlyBirdYoYo.Utilities.csproj" />
+    <ProjectReference Include="..\Pdd.OpenSdk.AspNetCore\Pdd.OpenSdk.AspNetCore.csproj" />
+    <ProjectReference Include="..\Platforms\Alibaba\Alipay.AopSdk.AspnetCore\Alipay.AopSdk.AspNetCore.csproj" />
+    <ProjectReference Include="..\Taobao.Pac.Sdk.AspNetCore\Taobao.Pac.Sdk.AspNetCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Configs\log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Configs\Template\ExAdvancedService.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\Template\ExServiceItem.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\Template\ExServiceItem1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\Template\ExServiceItemCaiNiao.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\Template\ExServiceType.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\Template\ExServiceType1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\Template\ExServiceTypeCaiNiao.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\Template\ExTemplateItem.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

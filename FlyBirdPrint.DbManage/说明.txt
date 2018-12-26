@@ -1,0 +1,21 @@
+﻿支持SQLSERVER 和Mysql
+
+基于表达式树 Expression支持的系统平台
+Windows 7, Windows Vista SP1 或更高版本, 
+Windows XP SP3, 
+Windows Server 2008, Windows Server 2008 R2（支持 SP1 或更高版本的服务器核心）, Windows Server 2003 SP2
+
+
+数据的常用操作即可，CURD的规范 
+其他个性化的操作  交给特定的类进行处理
+
+实体对应的表 使用属性 MapTableAttribute进行定义
+
+使用步骤  1 必须制定全局数据库连接字符串GlobalDBConnection
+2  然后对应 的数据藏吹对象  继承 DBContext 即可 实现基本的CURD操作  分页等
+3   如果需要特殊的SQL处理，在具体的数据仓储中进行实现
+    首选 使用存储过程 。。。。。。。。。
+
+
+
+视图 +存储过程生成的实体返回 ，实体上的MapTable属性待定义。。
