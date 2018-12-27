@@ -9,10 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FlyBirdPrint.Data\FlyBirdYoYo.Data.csproj" />
-    <ProjectReference Include="..\FlyBirdPrint.DbManage\FlyBirdYoYo.DbManage.csproj" />
-    <ProjectReference Include="..\FlyBirdPrint.DomainEntity\FlyBirdYoYo.DomainEntity.csproj" />
-    <ProjectReference Include="..\FlyBirdPrint.Utilities\FlyBirdYoYo.Utilities.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.Data\FlyBirdYoYo.Data.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.DbManage\FlyBirdYoYo.DbManage.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.DomainEntity\FlyBirdYoYo.DomainEntity.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.Utilities\FlyBirdYoYo.Utilities.csproj" />
     <ProjectReference Include="..\Platforms\Alibaba\Alipay.AopSdk.Core\Alipay.AopSdk.Core.csproj" />
     <ProjectReference Include="..\Taobao.Pac.Sdk\Taobao.Pac.Sdk.Core.csproj" />
   </ItemGroup>

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\FlyBirdPrint.Web\SandBox\sandbox_orderlist.json" Link="SandBox\sandbox_orderlist.json">
+    <Content Include="..\FlyBirdYoYo.Web\SandBox\sandbox_orderlist.json" Link="SandBox\sandbox_orderlist.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="appsettings.json">
@@ -37,11 +37,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FlyBirdPrint.BusinessServices\FlyBirdYoYo.BusinessServices.csproj" />
-    <ProjectReference Include="..\FlyBirdPrint.Data\FlyBirdYoYo.Data.csproj" />
-    <ProjectReference Include="..\FlyBirdPrint.DbManage\FlyBirdYoYo.DbManage.csproj" />
-    <ProjectReference Include="..\FlyBirdPrint.DomainEntity\FlyBirdYoYo.DomainEntity.csproj" />
-    <ProjectReference Include="..\FlyBirdPrint.Utilities\FlyBirdYoYo.Utilities.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.BusinessServices\FlyBirdYoYo.BusinessServices.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.Data\FlyBirdYoYo.Data.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.DbManage\FlyBirdYoYo.DbManage.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.DomainEntity\FlyBirdYoYo.DomainEntity.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.Utilities\FlyBirdYoYo.Utilities.csproj" />
     <ProjectReference Include="..\Pdd.OpenSdk.AspNetCore\Pdd.OpenSdk.AspNetCore.csproj" />
     <ProjectReference Include="..\Pdd.OpenSdk.Core\Pdd.OpenSdk.Core.csproj" />
     <ProjectReference Include="..\Platforms\Alibaba\Alipay.AopSdk.AspnetCore\Alipay.AopSdk.AspNetCore.csproj" />

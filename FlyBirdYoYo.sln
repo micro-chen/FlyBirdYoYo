@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.Utilities", "FlyBirdPrint.Utilities\FlyBirdYoYo.Utilities.csproj", "{38DA9C4A-2F9F-4D9C-A69E-26234B34A51C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.Utilities", "FlyBirdYoYo.Utilities\FlyBirdYoYo.Utilities.csproj", "{38DA9C4A-2F9F-4D9C-A69E-26234B34A51C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.Web", "FlyBirdPrint.Web\FlyBirdYoYo.Web.csproj", "{03F6E346-6C10-4AB2-A3E5-C5B034DC4F00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.Web", "FlyBirdYoYo.Web\FlyBirdYoYo.Web.csproj", "{03F6E346-6C10-4AB2-A3E5-C5B034DC4F00}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit.Test", "Unit.Test", "{F877357D-C063-4B9E-8A46-EAE186520909}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{770C2EB9-AAA0-456F-901D-04826637C088}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.DomainEntity", "FlyBirdPrint.DomainEntity\FlyBirdYoYo.DomainEntity.csproj", "{442F1B5B-FA5E-497B-8D83-C79CCF8B66EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.DomainEntity", "FlyBirdYoYo.DomainEntity\FlyBirdYoYo.DomainEntity.csproj", "{442F1B5B-FA5E-497B-8D83-C79CCF8B66EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.DbManage", "FlyBirdPrint.DbManage\FlyBirdYoYo.DbManage.csproj", "{4DB3E097-94D8-4D9F-824E-ED3F396D87EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.DbManage", "FlyBirdYoYo.DbManage\FlyBirdYoYo.DbManage.csproj", "{4DB3E097-94D8-4D9F-824E-ED3F396D87EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.DbManage.Tests", "FlyBirdPrint.DbManage.Tests\FlyBirdYoYo.DbManage.Tests.csproj", "{0A5D116F-8858-41FF-9180-483C383AC896}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.DbManage.Tests", "FlyBirdYoYo.DbManage.Tests\FlyBirdYoYo.DbManage.Tests.csproj", "{0A5D116F-8858-41FF-9180-483C383AC896}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.Data", "FlyBirdPrint.Data\FlyBirdYoYo.Data.csproj", "{96ED6772-1908-4814-BFA2-53FD0F29AC7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.Data", "FlyBirdYoYo.Data\FlyBirdYoYo.Data.csproj", "{96ED6772-1908-4814-BFA2-53FD0F29AC7C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.BusinessServices.Tests", "FlyBirdPrint.BusinessServices.Tests\FlyBirdYoYo.BusinessServices.Tests.csproj", "{F0D067F2-6010-40BE-8E7A-680A799C4C79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.BusinessServices.Tests", "FlyBirdYoYo.BusinessServices.Tests\FlyBirdYoYo.BusinessServices.Tests.csproj", "{F0D067F2-6010-40BE-8E7A-680A799C4C79}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.BusinessServices", "FlyBirdPrint.BusinessServices\FlyBirdYoYo.BusinessServices.csproj", "{F8D7E44A-A5FB-4894-ACF7-7EB289D7384D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlyBirdYoYo.BusinessServices", "FlyBirdYoYo.BusinessServices\FlyBirdYoYo.BusinessServices.csproj", "{F8D7E44A-A5FB-4894-ACF7-7EB289D7384D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alibaba", "Alibaba", "{C2FD6D74-CE1C-451D-84CC-089B2DD343F7}"
 EndProject

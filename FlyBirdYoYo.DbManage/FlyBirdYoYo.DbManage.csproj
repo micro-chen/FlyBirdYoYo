@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FlyBirdPrint.Utilities\FlyBirdYoYo.Utilities.csproj" />
+    <ProjectReference Include="..\FlyBirdYoYo.Utilities\FlyBirdYoYo.Utilities.csproj" />
   </ItemGroup>
 
   <ItemGroup>
