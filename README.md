@@ -27,6 +27,7 @@ Visual Studio 2017
 代码生成器（T4）--基于动软代码生成器的模板：\FlyBirdYoYo\FlyBirdPrint.DbManage\CodeGenTempletes      
 
 # 如何运行
+下载安装.net core 2.2 SDK: https://dotnet.microsoft.com/download
 克隆本项目到本地，然后 Visual Studio 2017 打开，F5  ->http://localhost:8003       
 Congratulations!      
 
