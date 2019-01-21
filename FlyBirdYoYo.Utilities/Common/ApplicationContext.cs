@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.Concurrent;
 using System.Security.Principal;
-
 using FlyBirdYoYo.Utilities.Ioc;
 using FlyBirdYoYo.Utilities.Interface;
 using FlyBirdYoYo.Utilities.SystemEnum;
@@ -83,7 +82,7 @@ namespace System
         }
 
 
-        
+
 
         /// <summary>
         /// 当前登录用户Id
@@ -157,33 +156,19 @@ namespace System
         {
             get
             {
-                if (HttpContext.Current != null)
+
+                ApplicationContext applicationContext = (ApplicationContext)CallContext.GetData(ApplicationContext.Key);
+                if (applicationContext == null)
                 {
-                    ApplicationContext applicationContext = (ApplicationContext)HttpContext.Current.Items[(object)ApplicationContext.Key];
-                    if (applicationContext == null)
-                    {
-                        applicationContext = new ApplicationContext();
-                        HttpContext.Current.Items[(object)ApplicationContext.Key] = (object)applicationContext;
-                    }
-                    return applicationContext;
+                    applicationContext = new ApplicationContext();
+                    CallContext.SetData(ApplicationContext.Key, (object)applicationContext);
                 }
-                else
-                {
-                    ApplicationContext applicationContext = (ApplicationContext)CallContext.GetData(ApplicationContext.Key);
-                    if (applicationContext == null)
-                    {
-                        applicationContext = new ApplicationContext();
-                        CallContext.SetData(ApplicationContext.Key, (object)applicationContext);
-                    }
-                    return applicationContext;
-                }
+                return applicationContext;
+
             }
             set
             {
-                if (HttpContext.Current != null)
-                    HttpContext.Current.Items[(object)ApplicationContext.Key] = (object)value;
-                else
-                    CallContext.SetData(ApplicationContext.Key, (object)value);
+                CallContext.SetData(ApplicationContext.Key, (object)value);
             }
         }
 
@@ -249,10 +234,7 @@ namespace System
 
         public static void Clear()
         {
-            if (HttpContext.Current != null)
-                HttpContext.Current.Items.Remove((object)ApplicationContext.Key);
-            else
-                CallContext.FreeNamedDataSlot(ApplicationContext.Key);
+            CallContext.FreeNamedDataSlot(ApplicationContext.Key);
         }
 
 
