@@ -13,7 +13,6 @@ using FlyBirdYoYo.Utilities;
 using FlyBirdYoYo.DbManage;
 using FlyBirdYoYo.Web.Configs;
 using FlyBirdYoYo.Utilities.Interface;
-using FlyBirdYoYo.DbManage.DataStructures;
 using FlyBirdYoYo.BusinessServices;
 using FlyBirdYoYo.DomainEntity.Login;
 using FlyBirdYoYo.Utilities.SystemEnum;
@@ -21,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using FlyBirdYoYo.Utilities.Ioc;
 using FlyBirdYoYo.BusinessServices.Authentication;
 using FlyBirdYoYo.Utilities.DataStructure;
+using FlyBirdYoYo.DbManage.Mapping;
 
 namespace FlyBirdYoYo.Tests
 {
@@ -33,7 +33,7 @@ namespace FlyBirdYoYo.Tests
         /// <summary>
         /// 当前固定模拟登录用户Id
         /// </summary>
-        protected  long CurrentUserId
+        protected long CurrentUserId
         {
             get
             {
@@ -46,14 +46,13 @@ namespace FlyBirdYoYo.Tests
             }
         }
 
-        public TestBase()
-        {
-            this.Init();
-        }
 
-            
+
+        [TestInitialize]
         public void Init()
         {
+            var watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
             //设置配置加载
             var builder = new ConfigurationBuilder()
              .SetBasePath(Directory.GetCurrentDirectory())
@@ -71,6 +70,11 @@ namespace FlyBirdYoYo.Tests
             AutoMapperConfig.Config();
 
             this.MockIoc();
+
+            watch.Stop();
+
+            System.Diagnostics.Debug.WriteLine($"初始化耗时：{watch.ElapsedMilliseconds} ms");
+
         }
 
 

@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 using System.Text;
 using System.Reflection;
  
-namespace FlyBirdYoYo.DbManage
+namespace FlyBirdYoYo.DbManage.Mapping
 {
     /// <summary>
     /// 管理本地sql 字段属性的映射

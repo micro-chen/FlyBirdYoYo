@@ -11,7 +11,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Aliyun.OSS.SDK.NetCore" Version="2.9.0" />
 		<PackageReference Include="AutoMapper" Version="8.0.0" />
 		<PackageReference Include="AutoMapper.Collection" Version="5.0.0" />
 		<PackageReference Include="AutoMapper.Data" Version="3.0.0" />

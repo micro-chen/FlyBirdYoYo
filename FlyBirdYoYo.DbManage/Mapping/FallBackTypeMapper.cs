@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace FlyBirdYoYo.DbManage.DataStructures
+namespace FlyBirdYoYo.DbManage.Mapping
 {
     public class FallBackTypeMapper : SqlMapper.ITypeMap
     {

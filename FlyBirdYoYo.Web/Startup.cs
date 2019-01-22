@@ -25,7 +25,7 @@ using FlyBirdYoYo.Utilities.Interface;
 using FlyBirdYoYo.BusinessServices.Authentication;
 using FlyBirdYoYo.Utilities.Ioc;
 
-using FlyBirdYoYo.DbManage.DataStructures;
+using FlyBirdYoYo.DbManage.Mapping;
 
 namespace FlyBirdYoYo.Web
 {

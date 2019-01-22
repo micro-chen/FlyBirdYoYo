@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Dapper;
 using FlyBirdYoYo.Utilities.TypeFinder;
 
-namespace FlyBirdYoYo.DbManage.DataStructures
+namespace FlyBirdYoYo.DbManage.Mapping
 {
     public static class TypeMapper
     {
@@ -33,9 +33,6 @@ namespace FlyBirdYoYo.DbManage.DataStructures
 
                 var entityTypes = typeFinder.FindClassesOfType(typeof(BaseEntity));
 
-                ////////////var types = from type in Assembly.Load(@namespace).GetTypes()
-                ////////////            where type.IsClass && type.Namespace == @namespace
-                ////////////            select type;
 
                 if (entityTypes.IsNotEmpty())
                 {
@@ -44,7 +41,7 @@ namespace FlyBirdYoYo.DbManage.DataStructures
                     {
                         //////////////////var mapper = (SqlMapper.ITypeMap)Activator.CreateInstance(typeof(ColumnAttributeTypeMapper<>)
                         //////////////////     .MakeGenericType(type));
-                        ///上面是基于反射的方式创建的Mapper实例--尽量少些反射 能不用反射就不用反射  嘿嘿----by wali-2018-10-31
+                        ///上面是基于反射的方式创建的Mapper实例--尽量少些反射 能不用反射就不用反射 
                         var mapper = new ColumnAttributeTypeMapper(type);
                         SqlMapper.SetTypeMap(type, mapper);
                     });

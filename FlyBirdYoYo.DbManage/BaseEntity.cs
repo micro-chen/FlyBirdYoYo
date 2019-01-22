@@ -11,6 +11,7 @@ using TableAttribute = System.ComponentModel.DataAnnotations.Schema.TableAttribu
 
 using Dapper.Contrib.Extensions;
 using FlyBirdYoYo.Utilities.Caching;
+using FlyBirdYoYo.DbManage.Mapping;
 
 namespace FlyBirdYoYo.DbManage
 {

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
-namespace FlyBirdYoYo.DbManage.DataStructures
+namespace FlyBirdYoYo.DbManage.Mapping
 {
     /// <summary>
     /// 基于Dapper的属性标注的  自定义Mapper注册

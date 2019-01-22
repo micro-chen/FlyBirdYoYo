@@ -37,12 +37,16 @@ namespace FlyBirdYoYo.DbManage
                 var config = new DbConnConfig(itemConnString.ConnectionString)
                 {
                     Name = itemConnString.Name,
-                    Code=itemConnString.Code,
+                    Code = itemConnString.Code,
                     //ConnString = ,
                     ProviderName = itemConnString.ProviderName,
-                    SqlOutPut= itemConnString.SqlOutPut
+                    SqlOutPut = itemConnString.SqlOutPut
 
                 };
+                if (GlobalDBConnection.AllDbConnConfigs.ContainsKey(config.Name))
+                {
+                    throw new Exception($"指定name {config.Name}的连接字符串已经存在！不允许重复！");
+                }
 
                 GlobalDBConnection.AllDbConnConfigs.Add(config.Name, config);
             }

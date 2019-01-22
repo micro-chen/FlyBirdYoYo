@@ -15,6 +15,7 @@ using FlyBirdYoYo.DbManage.Utilities;
 using FlyBirdYoYo.Utilities.Logging;
 
 using FlyBirdYoYo.Utilities;
+using FlyBirdYoYo.DbManage.Mapping;
 
 namespace FlyBirdYoYo.DbManage
 {
