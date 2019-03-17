@@ -679,7 +679,7 @@ namespace Alipay.AopSdk.Core.Util
 			{
 				throw new AopException("Alipay.AopSdk.Core.Util.AlipaySignature LoadCertificateString DecodeRSAPrivateKey Error", ex);
 			}
-			return null;
+			 
 		}
 
 		private static RSA DecodeRSAPrivateKey(byte[] privkey, string signType)

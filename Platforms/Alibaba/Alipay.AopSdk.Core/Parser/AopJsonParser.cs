@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 using Alipay.AopSdk.Core.Util;
-using Newtonsoft.Json;
+
 
 namespace Alipay.AopSdk.Core.Parser
 {

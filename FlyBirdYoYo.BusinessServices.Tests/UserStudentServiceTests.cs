@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -104,7 +103,7 @@ namespace FlyBirdYoYo.BusinessServices.Services.Tests
                 {
                     Name = "你猜猜-" + Guid.NewGuid().ToString(),
                     Age = rand.Next(1, 100),
-                    Sex = false,
+                    Sex = i%2==0,
                     Score = 33355.98m,
                     Longitude = 59595959,
                     AddTime = DateTime.Now,

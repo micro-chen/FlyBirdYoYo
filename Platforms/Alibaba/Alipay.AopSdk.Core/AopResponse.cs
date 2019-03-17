@@ -17,7 +17,7 @@ namespace Alipay.AopSdk.Core
 		///     对应 ErrCode
 		/// </summary>
 		[JsonProperty("code")]
-		public string Code
+		public virtual string Code
 		{
 			get => code;
 			set => code = value;
@@ -28,7 +28,7 @@ namespace Alipay.AopSdk.Core
 		///     对应 ErrMsg
 		/// </summary>
 		[JsonProperty("msg")]
-		public string Msg
+		public virtual string Msg
 		{
 			get => msg;
 			set => msg = value;

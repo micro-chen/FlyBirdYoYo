@@ -70,9 +70,6 @@ namespace FlyBirdYoYo.Web.Controllers.WebUI
         /// <summary>
         /// 菜鸟的回调处理
         /// 发起地址：
-        ///https://open.taobao.com/doc.htm?docId=107149&docType=1
-        /// http://lcp.cloud.cainiao.com/permission/isv/grantpage.do?isvAppKey=<YourAppKey>&ext=<YourExtentionInfo>&redirectUrl=http://www.<YourRedirectUrl>.com/auth/callback.do
-        /// http://lcp.cloud.cainiao.com/permission/isv/grantpage.do?isvAppKey=472333&ext=66666666666&redirectUrl=http://api.flybirdyoyo.com/cainiao/call_back_handler
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -80,6 +77,19 @@ namespace FlyBirdYoYo.Web.Controllers.WebUI
         [ActionName("call_back_handler")]
         public async Task<IActionResult> AuthCallBack(string accessCode, string appkey, string ext)
         {
+            #region 参考文档
+
+
+            /*
+             参考文档：   ///https://open.taobao.com/doc.htm?docId=107149&docType=1
+        /// http://lcp.cloud.cainiao.com/permission/isv/grantpage.do?isvAppKey=<YourAppKey>&ext=<YourExtentionInfo>&redirectUrl=http://www.<YourRedirectUrl>.com/auth/callback.do
+        /// http://lcp.cloud.cainiao.com/permission/isv/grantpage.do?isvAppKey=472333&ext=66666666666&redirectUrl=http://api.flybirdyoyo.com/cainiao/call_back_handler
+        /// </summary>
+             */
+
+            #endregion
+
+
             BusinessViewModelContainer<string> msgResult = new BusinessViewModelContainer<string>();
 
             if (string.IsNullOrEmpty(accessCode) || string.IsNullOrEmpty(appkey) || string.IsNullOrEmpty(ext))

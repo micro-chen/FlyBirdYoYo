@@ -12,7 +12,7 @@ namespace Alipay.AopSdk.Core.Response
 		///     返回结果码，如200，标识成功
 		/// </summary>
 		[JsonProperty("code")]
-		public string Code { get; set; }
+		public override string Code { get; set; }
 
 		/// <summary>
 		///     当前组的值

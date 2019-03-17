@@ -28,7 +28,7 @@ namespace FlyBirdYoYo.DbManage.Mapping
                         return result;
                     }
                 }
-                catch (NotImplementedException nix)
+                catch (NotImplementedException ex)
                 {
                     // the CustomPropertyTypeMap only supports a no-args
                     // constructor and throws a not implemented exception.
@@ -58,7 +58,7 @@ namespace FlyBirdYoYo.DbManage.Mapping
                         return result;
                     }
                 }
-                catch (NotImplementedException nix)
+                catch (NotImplementedException ex)
                 {
                     // the CustomPropertyTypeMap only supports a no-args
                     // constructor and throws a not implemented exception.
@@ -81,7 +81,7 @@ namespace FlyBirdYoYo.DbManage.Mapping
                         return result;
                     }
                 }
-                catch (NotImplementedException nix)
+                catch (NotImplementedException ex)
                 {
                     // the CustomPropertyTypeMap only supports a no-args
                     // constructor and throws a not implemented exception.

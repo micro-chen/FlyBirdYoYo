@@ -11,7 +11,7 @@ namespace Alipay.AopSdk.Core.Response
 		///     结果码
 		/// </summary>
 		[JsonProperty("code")]
-		public string Code { get; set; }
+		public override string Code { get; set; }
 
 		/// <summary>
 		///     id字典，key为userId和老的openId，value为新的openId
@@ -23,6 +23,6 @@ namespace Alipay.AopSdk.Core.Response
 		///     结果描述
 		/// </summary>
 		[JsonProperty("msg")]
-		public string Msg { get; set; }
+		public override string Msg { get; set; }
 	}
 }

@@ -11,7 +11,7 @@ namespace Alipay.AopSdk.Core.Response
 		///     返回结果码，如200，标识成功
 		/// </summary>
 		[JsonProperty("code")]
-		public string Code { get; set; }
+		public override string Code { get; set; }
 
 		/// <summary>
 		///     图片地址
@@ -29,6 +29,6 @@ namespace Alipay.AopSdk.Core.Response
 		///     结果吗描述信息
 		/// </summary>
 		[JsonProperty("msg")]
-		public string Msg { get; set; }
+		public override string Msg { get; set; }
 	}
 }

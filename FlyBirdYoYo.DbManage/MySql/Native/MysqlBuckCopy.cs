@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Transactions;
 using FlyBirdYoYo.Utilities.Logging;
 
+
 namespace MySql.Data.MySqlClient
 {
     /// <summary>
@@ -47,6 +48,13 @@ namespace MySql.Data.MySqlClient
         }
 
 
+        /// <summary>
+        /// MySQL的环境变量集
+        /// </summary>
+        internal MySqlVARIABLES MySqlVariables { get; set; }
+
+
+
         private string _TempDataDir;
         /// <summary>
         /// 临时数据文件目录
@@ -57,7 +65,16 @@ namespace MySql.Data.MySqlClient
             {
                 if (string.IsNullOrEmpty(_TempDataDir))
                 {
-                    _TempDataDir = Path.Combine(AppDomainTypeFinder.GetBinDirectory(), "temp");
+                    //检测是否启用了安全路径模式
+                    if (null!= this.MySqlVariables&&this.MySqlVariables.Secure_file_priv.IsNotEmpty())
+                    {
+                        _TempDataDir = this.MySqlVariables.Secure_file_priv;
+                    }
+                    else
+                    {
+                        _TempDataDir = Path.Combine(AppDomainTypeFinder.GetBinDirectory(), "temp");
+                    }
+                   
                 }
                 if (!Directory.Exists(_TempDataDir))
                 {
@@ -76,12 +93,13 @@ namespace MySql.Data.MySqlClient
         /// </summary>
         /// <param name="_connStr"></param>
         /// <param name="_timeOut"></param>
-        public MysqlBuckCopy(string _connStr, int _timeOut = DEFAUT_TIME_OUT)
+        public MysqlBuckCopy(string _connStr,  int _timeOut = DEFAUT_TIME_OUT)
         {
             this.ConnectionString = _connStr;
             this.TimeOut = _timeOut;
-        }
 
+            this.MySqlVariables = new MySqlVARIABLES(_connStr);
+        }
 
 
         /// <summary>
@@ -292,7 +310,16 @@ namespace MySql.Data.MySqlClient
                         dicValuePairs.TryGetValue(propty.Name, out cellValue);
                         if (null != cellValue)
                         {
-                            string cellContent = cellValue.ToString();
+                            string cellContent = string.Empty;
+                            if (cellValue is bool)
+                            {
+                                cellContent = ((bool)cellValue) == true ? "1" : "0";//bool 值转换为 1 0 --兼容mysql 的 tinyInt
+                            }
+                            else
+                            {
+                                cellContent = cellValue.ToString();
+                            }
+                            
                             if (cellContent.Contains(","))
                             {
                                 cellContent = string.Concat("\"", cellContent.Replace("\"", "\"\""), "\"");

@@ -11,7 +11,7 @@ namespace Alipay.AopSdk.Core.Response
 		///     success
 		/// </summary>
 		[JsonProperty("code")]
-		public string Code { get; set; }
+		public override string Code { get; set; }
 
 		/// <summary>
 		///     菜单内容
@@ -23,6 +23,6 @@ namespace Alipay.AopSdk.Core.Response
 		///     成功
 		/// </summary>
 		[JsonProperty("msg")]
-		public string Msg { get; set; }
+		public override string Msg { get; set; }
 	}
 }

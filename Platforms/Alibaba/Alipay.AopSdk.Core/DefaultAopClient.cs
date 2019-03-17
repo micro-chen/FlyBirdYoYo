@@ -36,7 +36,7 @@ namespace Alipay.AopSdk.Core
 		private readonly string encyptKey;
 		private readonly string encyptType = "AES";
 		private string format;
-		private string httpmethod;
+		////private string httpmethod;
 		private readonly bool keyFromFile;
 
 		public string notify_url;
