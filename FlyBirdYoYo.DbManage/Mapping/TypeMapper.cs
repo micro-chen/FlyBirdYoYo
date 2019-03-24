@@ -39,9 +39,6 @@ namespace FlyBirdYoYo.DbManage.Mapping
                     //创建指定的对象实例的Mapper
                     entityTypes.AsParallel().ForAll(type =>
                     {
-                        //////////////////var mapper = (SqlMapper.ITypeMap)Activator.CreateInstance(typeof(ColumnAttributeTypeMapper<>)
-                        //////////////////     .MakeGenericType(type));
-                        ///上面是基于反射的方式创建的Mapper实例--尽量少些反射 能不用反射就不用反射 
                         var mapper = new ColumnAttributeTypeMapper(type);
                         SqlMapper.SetTypeMap(type, mapper);
                     });

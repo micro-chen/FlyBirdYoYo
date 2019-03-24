@@ -14,7 +14,7 @@ namespace System
     /// </summary>
     public class ApplicationContext
     {
-        private static readonly string Key = "FlyBirdYoYo.Context.ApplicationContext";
+        private const string Key = "FlyBirdYoYo.Context.ApplicationContext";
         private IDictionary<string, object> _map;
 
         public bool HasValue
