@@ -256,7 +256,6 @@ DECLARE @ParamDef NVARCHAR(800)
         END
     END
 
-
         SELECT @TotalRecords AS TotalRows, @TotalPageCount AS TotalPages;
 
          SET @ParamDef={1}

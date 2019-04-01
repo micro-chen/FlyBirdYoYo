@@ -58,10 +58,10 @@ namespace FlyBirdYoYo.Data.Repository
             //condition.ShopCode = condition.ShopCode.ToSafeSqlString();
 
 
-            string sqlDataSet = $@"SELECT a.id,a.Name,a.age,b.class_name as ClassName 
-from user_students a 
-inner join school_class b on a.age=b.age where a.Name like @Name and sex=@Sex";
-
+            //////            string sqlDataSet = $@"SELECT a.id,a.Name,a.age,b.class_name as ClassName 
+            //////from user_students a 
+            //////inner join school_class b on a.age=b.age where a.Name like @Name and sex=@Sex";
+            string sqlDataSet = $@"UserStudents";
             try
             {
 
@@ -71,7 +71,7 @@ inner join school_class b on a.age=b.age where a.Name like @Name and sex=@Sex";
                     PageSize = pageSize,
                     TableNameOrSqlCmd = sqlDataSet,
                     SqlParameters=new { Name= name, Sex=0},//参数化查询参数设置
-                    TableOptions = PageTableOptions.SqlScripts,
+                    TableOptions = PageTableOptions.TableOrView,
                     SortField = "id",
                     IsDesc = false
                 };
@@ -93,12 +93,7 @@ inner join school_class b on a.age=b.age where a.Name like @Name and sex=@Sex";
         {
             using (var conn = this.GetCurrentDbConnection())
             {
-                string sql = @"SELECT a.id,a.`Name`,a.Age,b.ClassName from students a 
-                                    inner join schoolClass b on a.Age = b.Age where 1=1 ";
-                if(model.ClassName!=null)
-                {
-                    sql += " and b.ClassName=@ClassName";
-                }
+                string sql = @" SELECT top 100 * FROM dbo.UserStudents  a  where 1=1 ";
                 if (model.Name != null)
                 {
                     sql += " and a.Name=@Name";

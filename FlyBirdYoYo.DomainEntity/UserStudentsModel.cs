@@ -10,19 +10,20 @@ using FlyBirdYoYo.DbManage.Utilities;
 
 namespace FlyBirdYoYo.DomainEntity
 {
-    [Table("user_students")]
-    [PrimaryKey(Name = "id")]
+    //UserStudents
+    [Table("UserStudents")]
+    [PrimaryKey(Name = "Id")]
     [Serializable]
     public class UserStudentsModel : BaseEntity
     {
         #region 表字段属性
 
-        /// <summary>
-        /// id
-        /// </summary>	
         private long _Id;
+        /// <summary>
+        /// Id
+        /// </summary>	
         [DataMember]
-        [Column("id")]
+        [Column("Id")]
         public long Id
         {
             get { return _Id; }
@@ -32,12 +33,9 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("Id", value);
             }
         }
-        /// <summary>
-        /// age
-        /// </summary>	
         private int? _Age;
         [DataMember]
-        [Column("age")]
+        [Column("Age")]
         public int? Age
         {
             get { return _Age; }
@@ -47,12 +45,12 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("Age", value);
             }
         }
-        /// <summary>
-        /// name
-        /// </summary>	
         private string _Name;
+        /// <summary>
+        /// Name
+        /// </summary>	
         [DataMember]
-        [Column("name")]
+        [Column("Name")]
         public string Name
         {
             get { return _Name; }
@@ -62,12 +60,9 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("Name", value);
             }
         }
-        /// <summary>
-        /// sex
-        /// </summary>	
         private bool? _Sex;
         [DataMember]
-        [Column("sex")]
+        [Column("Sex")]
         public bool? Sex
         {
             get { return _Sex; }
@@ -77,12 +72,9 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("Sex", value);
             }
         }
-        /// <summary>
-        /// add_time
-        /// </summary>	
         private DateTime? _AddTime;
         [DataMember]
-        [Column("add_time")]
+        [Column("AddTime")]
         public DateTime? AddTime
         {
             get { return _AddTime; }
@@ -92,12 +84,9 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("AddTime", value);
             }
         }
-        /// <summary>
-        /// score
-        /// </summary>	
         private decimal? _Score;
         [DataMember]
-        [Column("score")]
+        [Column("Score")]
         public decimal? Score
         {
             get { return _Score; }
@@ -107,13 +96,10 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("Score", value);
             }
         }
-        /// <summary>
-        /// longitude
-        /// </summary>	
-        private double? _Longitude;
+        private decimal? _Longitude;
         [DataMember]
-        [Column("longitude")]
-        public double? Longitude
+        [Column("Longitude")]
+        public decimal? Longitude
         {
             get { return _Longitude; }
             set
@@ -122,13 +108,10 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("Longitude", value);
             }
         }
-        /// <summary>
-        /// latitude
-        /// </summary>	
-        private double? _Latitude;
+        private decimal? _Latitude;
         [DataMember]
-        [Column("latitude")]
-        public double? Latitude
+        [Column("Latitude")]
+        public decimal? Latitude
         {
             get { return _Latitude; }
             set
@@ -137,12 +120,9 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("Latitude", value);
             }
         }
-        /// <summary>
-        /// has_pay
-        /// </summary>	
         private decimal? _HasPay;
         [DataMember]
-        [Column("has_pay")]
+        [Column("HasPay")]
         public decimal? HasPay
         {
             get { return _HasPay; }
@@ -152,12 +132,9 @@ namespace FlyBirdYoYo.DomainEntity
                 NotifyPropertyChange("HasPay", value);
             }
         }
-        /// <summary>
-        /// home_number
-        /// </summary>	
         private int? _HomeNumber;
         [DataMember]
-        [Column("home_number")]
+        [Column("HomeNumber")]
         public int? HomeNumber
         {
             get { return _HomeNumber; }
@@ -169,5 +146,6 @@ namespace FlyBirdYoYo.DomainEntity
         }
 
         #endregion
+
     }
 }
