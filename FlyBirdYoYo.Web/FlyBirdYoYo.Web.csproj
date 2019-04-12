@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
     <UserSecretsId>aspnet-FlyBirdYoYo.Web-D2591AA8-61AB-450F-BF4C-66C497CC3534</UserSecretsId>
@@ -54,8 +54,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="8.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.6.0-preview.18571.3" />
     <PackageReference Include="TwoFactorAuth.Net" Version="1.3.4" />
   </ItemGroup>
@@ -71,59 +71,6 @@
     <None Include="SandBox\sandbox_orderlist.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="wwwroot\demo\Scripts\applicationCore.js" />
-    <None Include="wwwroot\demo\Scripts\jquery-1.6.4-vsdoc.js" />
-    <None Include="wwwroot\demo\Scripts\jquery-1.6.4.js" />
-    <None Include="wwwroot\demo\Scripts\jquery-1.6.4.min.js" />
-    <None Include="wwwroot\demo\Scripts\jquery.signalR-1.2.2.js" />
-    <None Include="wwwroot\demo\Scripts\jquery.signalR-1.2.2.min.js" />
-    <None Include="wwwroot\demo\Scripts\json2.js" />
-    <None Include="wwwroot\demo\Scripts\json2.min.js" />
-    <None Include="wwwroot\demo\Scripts\plugins\compress\base64-string.js" />
-    <None Include="wwwroot\demo\Scripts\plugins\compress\lz-string.js" />
-    <None Include="wwwroot\demo\Scripts\plugins\compress\lz-string.min.js" />
-    <None Include="wwwroot\demo\Scripts\printerHttpClient.js" />
-    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.core.js" />
-    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.hubs.js" />
-    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.common.js" />
-    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.foreverFrame.js" />
-    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.longPolling.js" />
-    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.serverSentEvents.js" />
-    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.transports.webSockets.js" />
-    <None Include="wwwroot\demo\Scripts\signalR-src\jquery.signalR.version.js" />
-    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
-    <None Include="wwwroot\scripts\layui\font\iconfont.svg" />
-    <None Include="wwwroot\scripts\layui\layui.all.js" />
-    <None Include="wwwroot\scripts\layui\layui.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\carousel.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\code.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\element.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\flow.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\form.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\jquery.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\laydate.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\layedit.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\layer.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\laypage.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\laytpl.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\mobile.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\table.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\tree.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\upload.js" />
-    <None Include="wwwroot\scripts\layui\lay\modules\util.js" />
-    <None Include="wwwroot\scripts\bootstrap.js" />
-    <None Include="wwwroot\scripts\bootstrap.min.js" />
-    <None Include="wwwroot\scripts\index\index.js" />
-    <None Include="wwwroot\scripts\index\jquery.easing.min.js" />
-    <None Include="wwwroot\scripts\index\layerslider.kreaturamedia.jquery-min.js" />
-    <None Include="wwwroot\scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="wwwroot\scripts\jquery-1.10.2.js" />
-    <None Include="wwwroot\scripts\jquery-1.10.2.min.js" />
-    <None Include="wwwroot\scripts\jquery-1.10.2.min.map" />
-    <None Include="wwwroot\scripts\jquery.nav.min.js" />
-    <None Include="wwwroot\scripts\jquery.portamento.js" />
-    <None Include="wwwroot\scripts\nav.js" />
-    <None Include="wwwroot\scripts\_references.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -167,6 +114,12 @@
     <None Update="Configs\Template\ExTemplateItem.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\styles\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\scripts\" />
   </ItemGroup>
 
 
