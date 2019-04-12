@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Dapper" Version="1.50.5" />
-    <PackageReference Include="Dapper.Contrib" Version="1.50.5" />
+    <PackageReference Include="Dapper" Version="1.60.6" />
+    <PackageReference Include="Dapper.Contrib" Version="1.60.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0-preview.18571.3" />
   </ItemGroup>
 
