@@ -578,7 +578,7 @@ namespace FlyBirdYoYo.DbManage
 
 
                     //多部分结果
-                    var multiResult = conn.QueryMultiple(pagerSql, condition.SqlParameters);
+                    var multiResult = conn.QueryMultiple(pagerSql);//////, condition.SqlParameters);
                     if (null != multiResult)
                     {
                         pageData = multiResult.ReadFirstOrDefault<PagedSqlDataResult<T>>();//分页信息

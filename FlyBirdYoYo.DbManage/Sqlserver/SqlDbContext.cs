@@ -321,7 +321,7 @@ namespace FlyBirdYoYo.DbManage
 
             if (null != predicate)
             {
-                string where = ResolveLambdaTreeToCondition.ConvertLambdaToCondition<TElement>(predicate,sqlFieldMapping);
+                string where = ResolveLambdaTreeToCondition.ConvertLambdaToCondition<TElement>(predicate, sqlFieldMapping);
                 sb_Sql.Append(" where ");//解析条件
                 sb_Sql.Append(where);//条件中带有参数=值的  拼接字符串
             }
@@ -507,7 +507,7 @@ namespace FlyBirdYoYo.DbManage
             string whereStr = "1=1";
             if (null != predicate)
             {
-                whereStr = ResolveLambdaTreeToCondition.ConvertLambdaToCondition<TElement>(predicate,sqlFieldMapping);
+                whereStr = ResolveLambdaTreeToCondition.ConvertLambdaToCondition<TElement>(predicate, sqlFieldMapping);
             }
 
 
@@ -542,7 +542,7 @@ namespace FlyBirdYoYo.DbManage
             return dataLst;
         }
 
- 
+
 
         /// <summary>
         /// 执行分页查询的核心方法：支持单表和多表分页
@@ -552,7 +552,7 @@ namespace FlyBirdYoYo.DbManage
         /// <returns></returns>
         public override PagedSqlDataResult<T> PageQuery<T>(PagedSqlCondition condition)
         {
-            PagedSqlDataResult<T> pageData = null;
+            PagedSqlDataResult<T> pageData = new PagedSqlDataResult<T>(); ;
             if (null == condition)
             {
                 return pageData;
@@ -563,9 +563,7 @@ namespace FlyBirdYoYo.DbManage
                 throw new Exception("分页查询错误：" + errMsg);
             }
 
-            //记录打出日志
-            this.SqlOutPutToLogAsync(Contanst.PageSql_Call_Name, condition);
-
+       
 
             try
             {
@@ -592,98 +590,49 @@ namespace FlyBirdYoYo.DbManage
                     condition.TableNameOrSqlCmd = string.Format(" ( {0} ) as  tmpTable ", condition.TableNameOrSqlCmd);
                 }
 
-                //完整的sql参数转化
-                var fullPagerSqlParas = new DynamicParameters();
-                fullPagerSqlParas.Add("@PageIndex", condition.PageNumber - 1);
-                fullPagerSqlParas.Add("@PageSize", condition.PageSize);
-                fullPagerSqlParas.Add("@PrimaryKey", condition.PrimaryKey);//主键
-                fullPagerSqlParas.Add("@TableNameOrSqlCmd", condition.TableNameOrSqlCmd);//将查询结果结合作为分页的表数据
-                fullPagerSqlParas.Add("@SortField", condition.SortField);
-                fullPagerSqlParas.Add("@SelectFields", condition.SelectFields);
-                fullPagerSqlParas.Add("@ConditionWhere", condition.ConditionWhere);
-                fullPagerSqlParas.Add("@IsDesc", condition.IsDesc == true ? 1 : 0);
+                //调用分页存储过程
+                StringBuilder sb_Sql = new StringBuilder();
+                sb_Sql.Append(Contanst.PageSql_Call_Name);
+
+                var sqlCmd = sb_Sql.ToString();
+
+                var sqlParas = new DynamicParameters();
+                sqlParas.Add("@PageIndex", condition.PageNumber - 1);//页索引
+                sqlParas.Add("@PageSize", condition.PageSize);//页大小
+                sqlParas.Add("@TableName", condition.TableNameOrSqlCmd);//表名称
+                sqlParas.Add("@SelectFields", condition.SelectFields);//查询的字段
+                ////sqlParas.Add("@PrimaryKey", condition.PrimaryKey);//查询的表的主键
+                sqlParas.Add("@ConditionWhere", condition.ConditionWhere);//查询条件      
+                sqlParas.Add("@SortField", condition.SortField);//排序字段
+                sqlParas.Add("@IsDesc", condition.IsDesc == true ? 1 : 0);//倒排序 正排序
+                sqlParas.Add("@TotalRecords", DbType.Int32, direction: ParameterDirection.Output);//总记录数（可选参数）
+                sqlParas.Add("@TotalPageCount", DbType.Int32, direction: ParameterDirection.Output);//总页数（输出参数
 
 
-
-                string pageSqlTemplate = PagerSQLProcedure.PAGE_SQL_CORE;
-                string pagerSql = string.Empty;
-
-                if (null != condition.SqlParameters)
-                {
-
-                    //参数列表字符串--声明
-                    //参数列表 -逗号分隔
-                    string[] sqlParaToken = null;
-                    string parasStr = this.GetParamSqlTokenToSqlParas(condition.TableNameOrSqlCmd, out sqlParaToken);
-                    string paraKeyValueString = string.Empty;
-
-                    string paraDeinfine = this.GetSqlServerParamDefineString(condition.SqlParameters, sqlParaToken,out paraKeyValueString);
-
-                    string defWithWraper = string.Format("N'{0}'", paraDeinfine);
-                    string defDotWraper= string.Format("N',{0}'", paraDeinfine);
-
-                    if (!string.IsNullOrEmpty(paraDeinfine))
-                    {
-                        pagerSql = string.Format(pageSqlTemplate, " ", defWithWraper, defDotWraper, paraKeyValueString);//需要带参数
-
-                    }
-                    else
-                    {
-                        pagerSql = string.Format(pageSqlTemplate, "--", "N''", "N''", " ");//不用带参数
-                    }
-
-
-                    //将参数整体注入到动态参数
-                    fullPagerSqlParas.AddDynamicParams(condition.SqlParameters);
-                }
-                else
-                {
-                    //fullPagerSqlParas.Add("@IsParamQuery", false);
-                    pagerSql = string.Format(pageSqlTemplate, "--", "N''", "N''", " ");//不用带参数
-                }
-
-
-
-
-                //string 
+                //记录打出日志
+                this.SqlOutPutToLogAsync(sqlCmd, sqlParas);
 
                 using (var conn = DatabaseFactory.GetDbConnection(this.DbConfig))
                 {
+                    var dataList = conn.Query<T>(sqlCmd, sqlParas, commandType: CommandType.StoredProcedure).AsList();
 
-
-                    //多部分结果
-                    var multiResult = conn.QueryMultiple(pagerSql, fullPagerSqlParas);
-                    if (null != multiResult)
-                    {
-                        pageData = multiResult.ReadFirstOrDefault<PagedSqlDataResult<T>>();//分页信息
-                        if (null != pageData)
-                        {
-                            pageData.DataList = multiResult.Read<T>().AsList();//结果行
-                        }
-                    }
-
-
-                    //---------废弃的存储过程----------
-                    ////////////////////var dataList = conn.Query<T>(pagerSql, fullPagerSqlParas, commandType: CommandType.Text).AsList();
-                    ////////////////////if (dataList.IsNotEmpty())
-                    ////////////////////{
-                    ////////////////////    pageData = new PagedSqlDataResult<T>(dataList);
-
-                    ////////////////////    //查询完毕后 根据输出参数 返回总记录数 总页数
-                    ////////////////////    pageData.TotalRows = fullPagerSqlParas.Get<int>("@TotalRecords");
-                    ////////////////////    pageData.TotalPages = fullPagerSqlParas.Get<int>("@TotalPageCount");
-
-                    ////////////////////}
-
-
-
+                  
+                    pageData.DataList = dataList;
                 }
+
+                //查询完毕后 根据输出参数 返回总记录数 总页数
+                var totalRecords = sqlParas.Get<int>("@TotalRecords");
+                var totalPages = sqlParas.Get<int>("@TotalPageCount");
+
+                //查询完毕后 根据输出参数 返回总记录数 总页数
+                pageData.TotalRows = totalRecords;
+                pageData.TotalPages = totalPages;
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
             return pageData;
         }
 
@@ -772,7 +721,7 @@ namespace FlyBirdYoYo.DbManage
             var whereStr = "1=1";
             if (null != predicate)
             {
-                whereStr = ResolveLambdaTreeToCondition.ConvertLambdaToCondition<TElement>(predicate,sqlFieldMapping);
+                whereStr = ResolveLambdaTreeToCondition.ConvertLambdaToCondition<TElement>(predicate, sqlFieldMapping);
             }
             StringBuilder sb_Sql = new StringBuilder();
             sb_Sql.AppendFormat("delete from {0} ", tableInDbName);
@@ -834,7 +783,7 @@ namespace FlyBirdYoYo.DbManage
 
             try
             {
-          
+
 
                 int counter = 0;
                 foreach (var item in paraTokens)
@@ -897,8 +846,8 @@ namespace FlyBirdYoYo.DbManage
 
                     counter += 1;
                 }
-              
-          
+
+
 
             }
             catch (Exception ex)
@@ -907,7 +856,7 @@ namespace FlyBirdYoYo.DbManage
             }
 
             paraKeyValueString = sb_KeyValue.ToString();
-            
+
             return sb_Para.ToString();
         }
 

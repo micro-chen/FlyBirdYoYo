@@ -327,7 +327,7 @@ namespace FlyBirdYoYo.BusinessServices.Services.Tests
             int pageSize = 10;
             var dataPage = Singleton<UserStudentsService>.Instance.SearchUserStudentsHandler(new DomainEntity.QueryCondition.StudentQueryCondition
             {
-                KeyWord = "%小明%",
+                KeyWord = "你",
                 PageNumber = pageIndex + 1,
                 PageSize = pageSize
             });

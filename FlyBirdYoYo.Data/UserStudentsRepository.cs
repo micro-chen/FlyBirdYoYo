@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Text;
 using System.Data.Common;
 using System.Linq.Expressions;
 using Dapper;
@@ -9,7 +10,7 @@ using FlyBirdYoYo.DbManage;
 using FlyBirdYoYo.DomainEntity;
 using FlyBirdYoYo.DomainEntity.ViewModel;
 using FlyBirdYoYo.Utilities.Interface;
-
+using FlyBirdYoYo.Utilities.SQL;
 namespace FlyBirdYoYo.Data.Repository
 {
     public class UserStudentsRepository : BaseRepository<UserStudentsModel>, IDbContext<UserStudentsModel>, IRepository
@@ -47,11 +48,11 @@ namespace FlyBirdYoYo.Data.Repository
         /// 分页查询年龄大于某个值的学生信息
         /// 支持参数化查询
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="keyWord"></param>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public PagedSqlDataResult<StudentDto> GetStudentssByPagerAndCondition(string name, int pageIndex, int pageSize)
+        public PagedSqlDataResult<StudentDto> GetStudentssByPagerAndCondition(string keyWord, int pageIndex, int pageSize)
         {
             //防止sql 注入
             //condition.CompanyCode = condition.CompanyCode.ToSafeSqlString();
@@ -70,11 +71,16 @@ namespace FlyBirdYoYo.Data.Repository
                     PageNumber = pageIndex,
                     PageSize = pageSize,
                     TableNameOrSqlCmd = sqlDataSet,
-                    SqlParameters=new { Name= name, Sex=0},//参数化查询参数设置
                     TableOptions = PageTableOptions.TableOrView,
                     SortField = "id",
                     IsDesc = false
                 };
+                StringBuilder  sbWhereStr = new StringBuilder( " 1=1 ");
+                if (!string.IsNullOrEmpty(keyWord))
+                {
+                    sbWhereStr.AppendFormat(" and Name like '%{0}%' ", keyWord.ToSafeSqlString());
+                }
+                pagerCond.ConditionWhere = sbWhereStr.ToString();
 
                 var data = this.PageQuery<StudentDto>(pagerCond);
 

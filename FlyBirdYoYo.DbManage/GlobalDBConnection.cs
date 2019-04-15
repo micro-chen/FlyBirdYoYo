@@ -54,7 +54,7 @@ namespace FlyBirdYoYo.DbManage
                         {
                             case SupportDbType.SQLSERVER:
                                 //1 创建必须的分页存储过程等全局操作
-                                //PagerSQLProcedure.CheckAndCreatePagerSQLProcedure(itemConfig);
+                                PagerSQLProcedure.CheckAndCreatePagerSQLProcedure(itemConfig);
                                 break;
                             case SupportDbType.MYSQL:
                                 //1 创建必须的分页存储过程等全局操作

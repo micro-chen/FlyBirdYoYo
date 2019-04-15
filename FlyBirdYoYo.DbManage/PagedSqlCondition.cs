@@ -88,11 +88,11 @@ namespace FlyBirdYoYo.DbManage
         /// </summary>
         public PageTableOptions? TableOptions { get; set; }
 
-        /// <summary>
-        /// 参数化sql :执行的sql 查询参数
-        /// 请传递一个包含参数属性Model实体对象
-        /// </summary>
-        public object SqlParameters { get; set; }
+        /////////// <summary>
+        /////////// 参数化sql :执行的sql 查询参数
+        /////////// 请传递一个包含参数属性Model实体对象
+        /////////// </summary>
+        ////////public object SqlParameters { get; set; }
 
         /// <summary>
         /// 子集字段，默认为：*

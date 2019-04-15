@@ -1,9 +1,7 @@
-#region Usings
 
 using System.Text;
 using System.Text.RegularExpressions;
-
-#endregion
+using System.Linq;
 
 namespace FlyBirdYoYo.Utilities.SQL
 {
@@ -16,7 +14,7 @@ namespace FlyBirdYoYo.Utilities.SQL
     /// -----------------------------------------------------------------------------
     public static class SqlUtils
     {
-
+        private static string[] DIRTY_SQL_CHARS = new string[] { "[", "]", "-", "\\", ";", "//", ",", "(", ")", "}", "{", "%", "@", "*", "!", "'", "|" , "1=1", "select *", "and'", "or'", "insert into", "delete from", "alter table", "update", "create table", "create view", "drop view", "creat eindex", "drop index", "create procedure", "drop procedure", "create trigger", "drop trigger", "create schema", "drop schema", "create domain", "alter domain", "drop domain", ");", "select@", "declare@", "print@" };
         /// <summary>
         /// ¼ì²âÊÇ·ñÓÐSqlÎ£ÏÕ×Ö·û
         /// </summary>
@@ -27,14 +25,15 @@ namespace FlyBirdYoYo.Utilities.SQL
             //¹ýÂËµô tab  »Ø³µ »»ÐÐ·û
             strInput = strInput.Replace('\t', ' ').Replace('\r', ' ').Replace('\n', ' ').Replace(" ", "");
 
-            string SqlStr = "1=1|select *|and'|or'|insert into|delete from|alter table|update|create table|create view|drop view|creat eindex|drop index|create procedure|drop procedure|create trigger|drop trigger|create schema|drop schema|create domain|alter domain|drop domain|);|select@|declare@|print@";
-            string[] anySqlStr = SqlStr.Split('|');
-            foreach (string ss in anySqlStr)
+        
+         
+            foreach (string ss in DIRTY_SQL_CHARS)
             {
                 if (strInput.IndexOf(ss) > 0)
                 {
                     return false;
                 }
+
             }
 
             return true;
@@ -65,11 +64,14 @@ namespace FlyBirdYoYo.Utilities.SQL
             return strInput;
         }
 
-        public static string FilterString(string strName, string defaultString)
+        private static string FilterString(string strInput, string defaultString)
         {
-            return strName.Replace("[", defaultString).Replace("]", defaultString).Replace("-", defaultString).Replace("\\", defaultString).Replace(";", defaultString).Replace("//", defaultString).Replace(",", defaultString)
-                .Replace("(", defaultString).Replace(")", defaultString).Replace("}", defaultString).Replace("{", defaultString).Replace("%", defaultString).Replace("@", defaultString).Replace("*", defaultString)
-                .Replace("!", defaultString).Replace("'", defaultString).Replace("|", defaultString);
+            foreach (var itemDityChar in DIRTY_SQL_CHARS)
+            {
+                strInput.Replace(itemDityChar, defaultString);
+            }
+
+            return strInput;
         }
 
 
